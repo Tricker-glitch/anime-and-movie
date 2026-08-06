@@ -1,6 +1,6 @@
 const { readFileSync, existsSync } = require('node:fs');
 
-const requiredFiles = ['index.html', 'src/styles.css', 'src/main.js', 'app.py'];
+const requiredFiles = ['index.html', 'src/styles.css', 'src/main.js', 'app.py', 'assets/posters/rrr.svg', 'assets/posters/dangal.svg'];
 const missingFiles = requiredFiles.filter((file) => !existsSync(file));
 
 if (missingFiles.length) {
@@ -19,6 +19,8 @@ const checks = [
   ['HTML loads JavaScript module', html.includes('./src/main.js')],
   ['HTML has search form hook', html.includes('id="search-form"')],
   ['HTML has title grid hook', html.includes('id="title-grid"')],
+  ['HTML has visible search button text', html.includes('Search titles')],
+  ['HTML has results status hook', html.includes('id="results-status"')],
   ['HTML has chart list hook', html.includes('id="chart-list"')],
   ['CSS defines responsive styles', css.includes('@media (max-width: 850px)')],
   ['CSS styles title cards', css.includes('.title-card')],
@@ -26,8 +28,10 @@ const checks = [
   ['JavaScript renders charts', js.includes('renderCharts')],
   ['JavaScript supports random picks', js.includes('#random-pick')],
   ['JavaScript loads backend API', js.includes('/api/titles')],
+  ['JavaScript updates result count', js.includes('resultsStatus.textContent')],
   ['Python serves title API', py.includes('/api/titles')],
   ['Python includes Indian movie catalog', py.includes('Baahubali') && py.includes('Dangal')],
+  ['Catalog uses local poster assets', py.includes('./assets/posters/rrr.svg') && js.includes('./assets/posters/your-name.svg')],
 ];
 
 const failures = checks.filter(([, passed]) => !passed);

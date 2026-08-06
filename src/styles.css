@@ -81,7 +81,8 @@ button, input { font: inherit; }
 .stats-strip span, .section-heading p, .feature-list, .schedule-item em, .movie-row p, .pick-result { color: var(--muted); }
 .section-heading { align-items: end; display: flex; gap: 1rem; justify-content: space-between; margin-bottom: 1.5rem; }
 .section-heading h2, .split-section h2, .watchlist h2 { font-size: clamp(2rem, 4vw, 3.4rem); letter-spacing: -.06em; margin: 0; }
-.filter-tabs { display: flex; gap: .7rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.filter-tabs { display: flex; gap: .7rem; margin-bottom: 1rem; flex-wrap: wrap; }
+.results-status { color: var(--muted); font-weight: 800; margin: 0 0 1rem; }
 .filter-tabs button { background: var(--panel); border: 1px solid var(--line); border-radius: 999px; color: var(--text); cursor: pointer; font-weight: 800; padding: .65rem 1rem; }
 .filter-tabs .active { background: var(--gold); color: #171100; }
 .title-grid { display: grid; gap: 1.2rem; grid-template-columns: repeat(3, 1fr); }

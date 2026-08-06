@@ -31,7 +31,7 @@
           <form class="search-card" id="search-form" role="search">
             <label for="search-input" class="sr-only">Search titles</label>
             <input id="search-input" type="search" placeholder="Search Demon Slayer, Dune, Makoto Shinkai..." autocomplete="off" />
-            <button type="submit">Search</button>
+            <button class="search-button" type="submit">Search titles</button>
           </form>
           <div class="hero-actions">
             <a class="primary-action" href="#discover">Start exploring</a>
@@ -71,6 +71,7 @@
           <button data-filter="movie">Movies</button>
           <button data-filter="indian">Indian Movies</button>
         </div>
+        <p class="results-status" id="results-status" aria-live="polite"></p>
         <div class="title-grid" id="title-grid"></div>
       </section>
 
