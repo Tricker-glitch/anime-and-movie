@@ -95,3 +95,106 @@ document.querySelector('#random-pick').addEventListener('click', () => {
 });
 
 loadTitles();
+
+const rankThresholds = [
+  { rank: 'SSS', coins: 1000 },
+  { rank: 'SS', coins: 750 },
+  { rank: 'S', coins: 500 },
+  { rank: 'A', coins: 300 },
+  { rank: 'B', coins: 180 },
+  { rank: 'C', coins: 90 },
+  { rank: 'D', coins: 30 },
+  { rank: 'E', coins: 0 },
+];
+
+const demoAdmin = { username: 'admin', password: 'otaku-admin-2026' };
+const coinBalance = document.querySelector('#coin-balance');
+const rankBadge = document.querySelector('#rank-badge');
+const rankProgress = document.querySelector('#rank-progress');
+const uploads = document.querySelector('#uploads');
+
+function getCoins() {
+  return Number(localStorage.getItem('otakuCoins') || '0');
+}
+
+function setCoins(value) {
+  localStorage.setItem('otakuCoins', String(value));
+  updateRankDisplay();
+}
+
+function getRank(coins) {
+  return rankThresholds.find((item) => coins >= item.coins);
+}
+
+function updateRankDisplay() {
+  const coins = getCoins();
+  const rank = getRank(coins);
+  const nextRank = [...rankThresholds].reverse().find((item) => item.coins > coins);
+  coinBalance.textContent = `${coins} Otaku coins`;
+  rankBadge.textContent = rank.rank;
+  rankProgress.textContent = nextRank
+    ? `${nextRank.coins - coins} coins needed to reach ${nextRank.rank} rank.`
+    : 'You reached SSS rank. Demo reward tier complete.';
+}
+
+document.querySelector('#login-form').addEventListener('submit', (event) => {
+  event.preventDefault();
+  const username = document.querySelector('#username').value.trim();
+  localStorage.setItem('otakuUser', username);
+  document.querySelector('#login-status').textContent = `Welcome, ${username}. Daily rewards are ready.`;
+});
+
+document.querySelector('#admin-form').addEventListener('submit', (event) => {
+  event.preventDefault();
+  const username = document.querySelector('#admin-username').value.trim();
+  const password = document.querySelector('#admin-password').value;
+  const isAdmin = username === demoAdmin.username && password === demoAdmin.password;
+  document.querySelector('#admin-status').textContent = isAdmin ? 'Admin unlocked.' : 'Wrong admin username or password.';
+  document.querySelector('#admin-panel').classList.toggle('locked', !isAdmin);
+});
+
+document.querySelector('#language-select').addEventListener('change', (event) => {
+  localStorage.setItem('otakuLanguage', event.target.value);
+  document.querySelector('#language-status').textContent = `Language: ${event.target.value}`;
+});
+
+document.querySelector('#save-announcement').addEventListener('click', () => {
+  const announcement = document.querySelector('#admin-announcement').value.trim();
+  localStorage.setItem('otakuAnnouncement', announcement);
+  document.querySelector('#announcement-output').textContent = announcement || 'No announcement saved.';
+});
+
+document.querySelectorAll('[data-reward]').forEach((button) => {
+  button.addEventListener('click', () => {
+    const rewards = { login: 10, watch: 25, finish: 75 };
+    setCoins(getCoins() + rewards[button.dataset.reward]);
+  });
+});
+
+document.querySelector('#screenshot-upload').addEventListener('change', (event) => {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.addEventListener('load', () => {
+    const image = document.createElement('img');
+    image.src = reader.result;
+    image.alt = `Uploaded screenshot: ${file.name}`;
+    uploads.prepend(image);
+    setCoins(getCoins() + 40);
+  });
+  reader.readAsDataURL(file);
+});
+
+document.querySelector('#share-url').textContent = window.location.href;
+document.querySelector('#share-site').addEventListener('click', async () => {
+  const shareData = { title: 'OtakuReel', text: 'Check out this anime and movie discovery site.', url: window.location.href };
+  if (navigator.share) {
+    await navigator.share(shareData);
+    document.querySelector('#share-status').textContent = 'Website link shared.';
+    return;
+  }
+  await navigator.clipboard.writeText(window.location.href);
+  document.querySelector('#share-status').textContent = 'Website link copied.';
+});
+
+updateRankDisplay();

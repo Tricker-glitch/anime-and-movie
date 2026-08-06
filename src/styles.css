@@ -144,3 +144,29 @@ button, input { font: inherit; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
+
+.control-panel, .rewards-section, .share-section { background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.03)); border: 1px solid var(--line); border-radius: 1.7rem; }
+.account-grid, .places-grid { display: grid; gap: 1rem; grid-template-columns: repeat(3, 1fr); }
+.login-card, .places-grid article, .rank-card, .upload-card { background: var(--panel); border: 1px solid var(--line); border-radius: 1.2rem; padding: 1.2rem; }
+.login-card { display: grid; gap: .8rem; }
+.login-card label, .upload-card label, .admin-panel label { color: var(--muted); display: grid; gap: .45rem; font-weight: 800; }
+.login-card input, .login-card select, .admin-panel textarea { background: rgba(255,255,255,.08); border: 1px solid var(--line); border-radius: .8rem; color: var(--text); padding: .8rem; width: 100%; }
+.login-card select option { color: #111827; }
+.login-card button, .reward-actions button, #share-site, #save-announcement { background: linear-gradient(135deg, var(--orange), var(--pink)); border: 0; border-radius: .8rem; color: #fff; cursor: pointer; font-weight: 900; padding: .8rem 1rem; }
+.admin-panel { margin-top: 1rem; }
+.admin-panel.locked { display: none; }
+.admin-panel textarea { min-height: 110px; resize: vertical; }
+.places-grid article strong { color: var(--gold); font-size: 1.6rem; }
+.rank-card { align-items: center; display: flex; gap: 1.2rem; justify-content: space-between; }
+#rank-badge { align-items: center; background: radial-gradient(circle, var(--gold), var(--orange)); border-radius: 50%; color: #1a1300; display: inline-flex; font-size: 2rem; font-weight: 1000; height: 76px; justify-content: center; width: 76px; }
+.reward-actions { display: flex; flex-wrap: wrap; gap: .7rem; }
+.upload-card { margin-top: 1rem; }
+.upload-card input { margin-top: .8rem; }
+.uploads { display: grid; gap: .8rem; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); margin-top: 1rem; }
+.uploads img { border: 1px solid var(--line); border-radius: .8rem; height: 150px; object-fit: cover; width: 100%; }
+#share-url, #share-status, #login-status, #admin-status, #language-status, #announcement-output { color: var(--muted); overflow-wrap: anywhere; }
+
+@media (max-width: 850px) {
+  .account-grid, .places-grid { grid-template-columns: 1fr; }
+  .rank-card { align-items: stretch; flex-direction: column; }
+}
