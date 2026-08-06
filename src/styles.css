@@ -170,3 +170,8 @@ button, input { font: inherit; }
   .account-grid, .places-grid { grid-template-columns: 1fr; }
   .rank-card { align-items: stretch; flex-direction: column; }
 }
+.payout-card { background: rgba(245, 200, 75, .08); border: 1px solid rgba(245, 200, 75, .28); border-radius: 1.2rem; display: grid; gap: .8rem; margin-top: 1rem; padding: 1.2rem; }
+.payout-card label { color: var(--muted); display: grid; gap: .45rem; font-weight: 800; }
+.payout-card input { background: rgba(255,255,255,.08); border: 1px solid var(--line); border-radius: .8rem; color: var(--text); padding: .8rem; width: 100%; }
+.payout-card button { background: linear-gradient(135deg, var(--gold), var(--orange)); border: 0; border-radius: .8rem; color: #1a1300; cursor: pointer; font-weight: 1000; padding: .8rem 1rem; }
+#payout-status, #payout-list { color: var(--muted); }

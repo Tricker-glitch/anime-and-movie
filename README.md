@@ -10,7 +10,7 @@ OtakuReel is a polished anime and movie discovery website concept. It combines I
 - Seasonal anime schedule section.
 - Movie night recommendation panel.
 - Embedded YouTube spotlight video section.
-- Login, admin unlock, Indian language selector with 22 scheduled Indian languages plus English, share-link button, screenshot uploads, and demo rank rewards.
+- Login, admin unlock, Indian language selector with 22 scheduled Indian languages plus English, share-link button, screenshot uploads, rank rewards, and manual payout review requests.
 - Random watchlist picker interaction.
 - Python backend at `/api/titles` serving anime, global movie, and Indian movie data.
 - Visible local SVG image cards for every anime, global movie, and Indian movie entry, so artwork works without network access.
@@ -42,7 +42,7 @@ The local demo admin login is:
 - Username: `admin`
 - Password: `otaku-admin-2026`
 
-This is only for the browser demo and should be changed before any real deployment. Reward coins are demo points only, not real money.
+This is only for the browser demo and should be changed before any real deployment. Cash reward requests are stored locally as pending admin reviews; real transfers require a licensed payment provider, KYC/tax checks, fraud prevention, and secure server-side accounting.
 
 ## Troubleshooting
 

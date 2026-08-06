@@ -198,3 +198,49 @@ document.querySelector('#share-site').addEventListener('click', async () => {
 });
 
 updateRankDisplay();
+
+const payoutForm = document.querySelector('#payout-form');
+const payoutList = document.querySelector('#payout-list');
+
+function getPayouts() {
+  return JSON.parse(localStorage.getItem('otakuPayouts') || '[]');
+}
+
+function savePayouts(payouts) {
+  localStorage.setItem('otakuPayouts', JSON.stringify(payouts));
+  renderPayouts();
+}
+
+function renderPayouts() {
+  const payouts = getPayouts();
+  payoutList.innerHTML = payouts.map((payout) => `
+    <li><strong>₹${payout.amount}</strong> for ${payout.name} · ${payout.status}</li>
+  `).join('') || '<li>No payout requests yet.</li>';
+}
+
+payoutForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const coins = getCoins();
+  const rank = getRank(coins).rank;
+  const amount = Number(document.querySelector('#payout-amount').value);
+  const payoutStatus = document.querySelector('#payout-status');
+
+  if (rank !== 'SSS') {
+    payoutStatus.textContent = 'Reach SSS rank before requesting a cash reward review.';
+    return;
+  }
+
+  const request = {
+    name: document.querySelector('#payout-name').value.trim(),
+    paymentId: document.querySelector('#payout-id').value.trim(),
+    amount,
+    status: 'Pending admin review — no automatic transfer',
+    createdAt: new Date().toISOString(),
+  };
+
+  savePayouts([request, ...getPayouts()]);
+  payoutStatus.textContent = 'Payout review request saved for admin verification.';
+  payoutForm.reset();
+});
+
+renderPayouts();

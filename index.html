@@ -134,7 +134,7 @@
         <div class="section-heading">
           <p class="eyebrow">Account setup</p>
           <h2>Login, language, ranks, and admin</h2>
-          <p>Demo rewards use Otaku coins only; they are not real money.</p>
+          <p>Rewards can create manual payout requests after SSS rank; real transfers require admin/legal/payment verification.</p>
         </div>
         <div class="account-grid">
           <form class="login-card" id="login-form">
@@ -236,6 +236,16 @@
           <input id="screenshot-upload" type="file" accept="image/*" />
           <div class="uploads" id="uploads"></div>
         </div>
+        <form class="payout-card" id="payout-form">
+          <h3>Cash reward request</h3>
+          <p>Request a manual payout review after reaching SSS rank. This demo creates a pending request only; connect a licensed payment provider before real transfers.</p>
+          <label>Payout name<input id="payout-name" placeholder="Your legal name" required /></label>
+          <label>UPI / payment ID<input id="payout-id" placeholder="name@bank" required /></label>
+          <label>Amount request<input id="payout-amount" type="number" min="100" step="50" placeholder="100" required /></label>
+          <button type="submit">Request payout review</button>
+          <p id="payout-status" aria-live="polite"></p>
+          <ul id="payout-list"></ul>
+        </form>
       </section>
 
       <section class="section share-section" id="share">
