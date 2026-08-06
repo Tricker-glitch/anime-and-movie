@@ -4,7 +4,7 @@
   "description": "A cinematic anime and movie discovery website inspired by IMDb-style ratings and anime streaming hubs.",
   "private": true,
   "scripts": {
-    "start": "python3 -m http.server 4173",
+    "start": "python3 app.py",
     "build": "node scripts/validate-site.js"
   }
 }
