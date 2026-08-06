@@ -17,6 +17,10 @@
           <a href="#anime">Anime</a>
           <a href="#movies">Movies</a>
           <a href="#charts">Charts</a>
+          <a href="#trailer">Video</a>
+          <a href="#login">Login</a>
+          <a href="#rewards">Rewards</a>
+          <a href="#share">Share</a>
           <a href="#watchlist">Watchlist</a>
         </div>
       </nav>
@@ -31,6 +35,7 @@
           <form class="search-card" id="search-form" role="search">
             <label for="search-input" class="sr-only">Search titles</label>
             <input id="search-input" type="search" placeholder="Search Demon Slayer, Dune, Makoto Shinkai..." autocomplete="off" />
+            <button class="search-button" type="submit">Search titles</button>
             <button type="submit">Search</button>
           </form>
           <div class="hero-actions">
@@ -45,6 +50,8 @@
           </div>
           <div class="spotlight-card">
             <span class="badge">Spotlight</span>
+            <h2>RRR × Your Name Spotlight</h2>
+            <p>Real movie/anime imagery · Python-powered catalog</p>
             <h2>Starlight Ronin: Eclipse Arc</h2>
             <p>Episode 8 just dropped · 98% fan match</p>
             <div class="rating-row"><strong>9.2</strong><span>/10</span><span>★ ★ ★ ★ ☆</span></div>
@@ -69,6 +76,9 @@
           <button class="active" data-filter="all">All</button>
           <button data-filter="anime">Anime</button>
           <button data-filter="movie">Movies</button>
+          <button data-filter="indian">Indian Movies</button>
+        </div>
+        <p class="results-status" id="results-status" aria-live="polite"></p>
           <button data-filter="series">Series</button>
         </div>
         <div class="title-grid" id="title-grid"></div>
@@ -105,12 +115,152 @@
         </div>
       </section>
 
+
+      <section class="section trailer-section" id="trailer">
+        <div class="section-heading">
+          <p class="eyebrow">Featured video</p>
+          <h2>Watch the spotlight trailer</h2>
+          <p>Embedded video showcase for visitors exploring the anime and movie hub.</p>
+        </div>
+        <div class="video-frame">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/GyontrGvj7Q?si=5f02IO6l7GsJ10zt&amp;start=2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </section>
+
       <section class="section" id="charts">
         <div class="section-heading">
           <p class="eyebrow">Charts</p>
           <h2>Top rated crossover list</h2>
         </div>
         <ol class="chart-list" id="chart-list"></ol>
+      </section>
+
+      <section class="section control-panel" id="login">
+        <div class="section-heading">
+          <p class="eyebrow">Account setup</p>
+          <h2>Login, language, ranks, and admin</h2>
+          <p>Rewards can create manual payout requests after SSS rank; real transfers require admin/legal/payment verification.</p>
+        </div>
+        <div class="account-grid">
+          <form class="login-card" id="login-form">
+            <h3>User login</h3>
+            <label>Username<input id="username" required placeholder="Your username" /></label>
+            <label>Password<input id="password" type="password" required placeholder="Your password" /></label>
+            <button type="submit">Login / create account</button>
+            <p id="login-status" aria-live="polite"></p>
+          </form>
+          <form class="login-card" id="admin-form">
+            <h3>Admin access</h3>
+            <p>Demo admin: <strong>admin</strong> / <strong>otaku-admin-2026</strong></p>
+            <label>Admin username<input id="admin-username" required placeholder="admin" /></label>
+            <label>Admin password<input id="admin-password" type="password" required placeholder="password" /></label>
+            <button type="submit">Unlock admin panel</button>
+            <p id="admin-status" aria-live="polite"></p>
+          </form>
+          <div class="login-card">
+            <h3>Language</h3>
+            <label for="language-select">Choose Indian language</label>
+            <select id="language-select">
+              <option value="English">English</option>
+              <option value="Hindi">हिन्दी</option>
+              <option value="Tamil">தமிழ்</option>
+              <option value="Telugu">తెలుగు</option>
+              <option value="Bengali">বাংলা</option>
+              <option value="Malayalam">മലയാളം</option>
+              <option value="Kannada">ಕನ್ನಡ</option>
+              <option value="Marathi">मराठी</option>
+              <option value="Gujarati">ગુજરાતી</option>
+              <option value="Punjabi">ਪੰਜਾਬੀ</option>
+              <option value="Urdu">اردو</option>
+              <option value="Assamese">অসমীয়া</option>
+              <option value="Odia">ଓଡ଼ିଆ</option>
+              <option value="Sanskrit">संस्कृतम्</option>
+              <option value="Konkani">कोंकणी</option>
+              <option value="Manipuri">মৈতৈলোন্</option>
+              <option value="Nepali">नेपाली</option>
+              <option value="Bodo">बर'</option>
+              <option value="Dogri">डोगरी</option>
+              <option value="Kashmiri">कॉशुर</option>
+              <option value="Maithili">मैथिली</option>
+              <option value="Santali">ᱥᱟᱱᱛᱟᱲᱤ</option>
+              <option value="Sindhi">سنڌي</option>
+            </select>
+            <p id="language-status">Language: English</p>
+          </div>
+        </div>
+        <div class="admin-panel locked" id="admin-panel">
+          <h3>Admin panel</h3>
+          <p>Add announcements, review uploads, and feature a trending movie. This demo stores changes in your browser.</p>
+          <label>Admin announcement<textarea id="admin-announcement" placeholder="Write a homepage announcement"></textarea></label>
+          <button id="save-announcement">Save announcement</button>
+          <p id="announcement-output"></p>
+        </div>
+      </section>
+
+      <section class="section" id="trending-movies">
+        <div class="section-heading">
+          <p class="eyebrow">Trending movies</p>
+          <h2>Hot in India and worldwide</h2>
+        </div>
+        <div class="movie-row trending-row">
+          <article><span>🔥</span><h3>RRR</h3><p>Indian epic action · Fan favorite</p></article>
+          <article><span>🔥</span><h3>Dangal</h3><p>Sports drama · Family pick</p></article>
+          <article><span>🔥</span><h3>Inception</h3><p>Sci-fi thriller · Rewatch classic</p></article>
+        </div>
+      </section>
+
+      <section class="section" id="anime-places">
+        <div class="section-heading">
+          <p class="eyebrow">Anime trip guide</p>
+          <h2>Top places for anime fans</h2>
+        </div>
+        <div class="places-grid">
+          <article><strong>01</strong><h3>Akihabara, Tokyo</h3><p>Iconic anime, manga, games, figures, and themed cafés.</p></article>
+          <article><strong>02</strong><h3>Nakano Broadway</h3><p>Retro collectibles, rare manga, and classic anime merchandise.</p></article>
+          <article><strong>03</strong><h3>Ikebukuro Otome Road</h3><p>Character shops, cosplay energy, and fandom meetups.</p></article>
+          <article><strong>04</strong><h3>Kyoto Animation areas</h3><p>Real-world inspiration spots for scenic anime pilgrimages.</p></article>
+        </div>
+      </section>
+
+      <section class="section rewards-section" id="rewards">
+        <div class="section-heading">
+          <p class="eyebrow">Rank rewards</p>
+          <h2>Daily streak from E rank to SSS rank</h2>
+          <p>Earn demo Otaku coins for daily login, watching, finishing series, and uploading screenshots.</p>
+        </div>
+        <div class="rank-card">
+          <div><span id="rank-badge">E</span><h3 id="coin-balance">0 Otaku coins</h3><p id="rank-progress">Start your streak to reach SSS rank.</p></div>
+          <div class="reward-actions">
+            <button data-reward="login">Daily login +10</button>
+            <button data-reward="watch">Watch series +25</button>
+            <button data-reward="finish">Finish series +75</button>
+          </div>
+        </div>
+        <div class="upload-card">
+          <label for="screenshot-upload">Upload local screenshot proof</label>
+          <input id="screenshot-upload" type="file" accept="image/*" />
+          <div class="uploads" id="uploads"></div>
+        </div>
+        <form class="payout-card" id="payout-form">
+          <h3>Cash reward request</h3>
+          <p>Request a manual payout review after reaching SSS rank. This demo creates a pending request only; connect a licensed payment provider before real transfers.</p>
+          <label>Payout name<input id="payout-name" placeholder="Your legal name" required /></label>
+          <label>UPI / payment ID<input id="payout-id" placeholder="name@bank" required /></label>
+          <label>Amount request<input id="payout-amount" type="number" min="100" step="50" placeholder="100" required /></label>
+          <button type="submit">Request payout review</button>
+          <p id="payout-status" aria-live="polite"></p>
+          <ul id="payout-list"></ul>
+        </form>
+      </section>
+
+      <section class="section share-section" id="share">
+        <div class="section-heading">
+          <p class="eyebrow">Share</p>
+          <h2>Share the website link</h2>
+          <p id="share-url">http://localhost:4173</p>
+        </div>
+        <button id="share-site">Copy/share website link</button>
+        <p id="share-status" aria-live="polite"></p>
       </section>
 
       <section class="watchlist" id="watchlist">
@@ -125,6 +275,7 @@
     </main>
 
     <footer class="footer">
+      <p>© 2026 OtakuReel. Demo entertainment discovery interface with image credits shown on cards.</p>
       <p>© 2026 OtakuReel. Demo entertainment discovery interface.</p>
       <a href="#top">Back to top ↑</a>
     </footer>
