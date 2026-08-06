@@ -105,6 +105,10 @@ button, input { font: inherit; }
 .movie-row { display: grid; gap: 1rem; grid-template-columns: repeat(3, 1fr); }
 .movie-row article { background: var(--panel-soft); border-radius: 1rem; padding: 1.2rem; }
 .movie-row span { color: var(--orange); font-weight: 1000; }
+.trailer-section { overflow: hidden; }
+.video-frame { border: 1px solid var(--line); border-radius: 1.5rem; box-shadow: 0 30px 80px rgba(0,0,0,.36); overflow: hidden; position: relative; }
+.video-frame::before { content: ""; display: block; padding-top: 56.25%; }
+.video-frame iframe { border: 0; height: 100%; inset: 0; position: absolute; width: 100%; }
 .chart-list { list-style: none; margin: 0; padding: 0; }
 .chart-list li { grid-template-columns: 1fr auto 90px; }
 .watchlist { align-items: center; display: grid; gap: 1.5rem; grid-template-columns: 1fr auto; }

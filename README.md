@@ -9,6 +9,7 @@ OtakuReel is a polished anime and movie discovery website concept. It combines I
 - Top-rated chart generated from the same title data.
 - Seasonal anime schedule section.
 - Movie night recommendation panel.
+- Embedded YouTube spotlight video section.
 - Random watchlist picker interaction.
 - Python backend at `/api/titles` serving anime, global movie, and Indian movie data.
 - Visible local SVG image cards for every anime, global movie, and Indian movie entry, so artwork works without network access.
