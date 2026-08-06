@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OtakuReel — Anime & Movie Discovery</title>
+    <meta name="description" content="An IMDb-like discovery homepage for anime and movies with ratings, watchlists, seasonal anime, trailers, and curated charts." />
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="navbar" aria-label="Primary navigation">
+        <a class="brand" href="#top" aria-label="OtakuReel home"><span>Otaku</span>Reel</a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">☰</button>
+        <div class="nav-links" id="nav-links">
+          <a href="#discover">Discover</a>
+          <a href="#anime">Anime</a>
+          <a href="#movies">Movies</a>
+          <a href="#charts">Charts</a>
+          <a href="#watchlist">Watchlist</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Anime seasons × cinema ratings × fan watchlists</p>
+          <h1 id="hero-title">Find your next obsession across anime and movies.</h1>
+          <p class="hero-text">Browse critic-style scores, community hype, episodes, trailers, cast notes, and streaming status in one polished entertainment hub.</p>
+          <form class="search-card" id="search-form" role="search">
+            <label for="search-input" class="sr-only">Search titles</label>
+            <input id="search-input" type="search" placeholder="Search Demon Slayer, Dune, Makoto Shinkai..." autocomplete="off" />
+            <button type="submit">Search</button>
+          </form>
+          <div class="hero-actions">
+            <a class="primary-action" href="#discover">Start exploring</a>
+            <a class="secondary-action" href="#charts">View top charts</a>
+          </div>
+        </div>
+        <aside class="hero-panel" aria-label="Featured title">
+          <div class="poster-stack">
+            <div class="poster poster-one">ANIME</div>
+            <div class="poster poster-two">FILM</div>
+          </div>
+          <div class="spotlight-card">
+            <span class="badge">Spotlight</span>
+            <h2>Starlight Ronin: Eclipse Arc</h2>
+            <p>Episode 8 just dropped · 98% fan match</p>
+            <div class="rating-row"><strong>9.2</strong><span>/10</span><span>★ ★ ★ ★ ☆</span></div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="stats-strip" aria-label="Platform stats">
+        <div><strong>12K+</strong><span>titles indexed</span></div>
+        <div><strong>4.8M</strong><span>fan ratings</span></div>
+        <div><strong>86</strong><span>seasonal simulcasts</span></div>
+        <div><strong>24/7</strong><span>trailer drops</span></div>
+      </section>
+
+      <section class="section" id="discover">
+        <div class="section-heading">
+          <p class="eyebrow">Discovery feed</p>
+          <h2>Trending now</h2>
+          <p>IMDb-style ranking cards blended with anime-season metadata.</p>
+        </div>
+        <div class="filter-tabs" aria-label="Title filters">
+          <button class="active" data-filter="all">All</button>
+          <button data-filter="anime">Anime</button>
+          <button data-filter="movie">Movies</button>
+          <button data-filter="series">Series</button>
+        </div>
+        <div class="title-grid" id="title-grid"></div>
+      </section>
+
+      <section class="split-section" id="anime">
+        <div>
+          <p class="eyebrow">Crunchyroll-inspired</p>
+          <h2>Seasonal anime tracker</h2>
+          <p>Follow simulcast days, dubbed availability, episode progress, and fandom momentum without leaving the discovery page.</p>
+          <ul class="feature-list">
+            <li>Episode schedule and release countdowns</li>
+            <li>Subbed/dubbed availability badges</li>
+            <li>Studio, source material, and arc tracking</li>
+          </ul>
+        </div>
+        <div class="schedule-card">
+          <h3>This week</h3>
+          <div class="schedule-item"><span>Mon</span><strong>Mecha Hearts</strong><em>Ep. 4</em></div>
+          <div class="schedule-item"><span>Wed</span><strong>Moonlit Bento Club</strong><em>Ep. 9</em></div>
+          <div class="schedule-item"><span>Fri</span><strong>Starlight Ronin</strong><em>Ep. 8</em></div>
+        </div>
+      </section>
+
+      <section class="section dark-panel" id="movies">
+        <div class="section-heading">
+          <p class="eyebrow">Cinema mode</p>
+          <h2>Movie night picks</h2>
+        </div>
+        <div class="movie-row">
+          <article><span>01</span><h3>Neon Harbor</h3><p>Sci-fi mystery · 2h 14m · 8.8</p></article>
+          <article><span>02</span><h3>The Last Projectionist</h3><p>Drama · 1h 52m · 8.5</p></article>
+          <article><span>03</span><h3>Kaiju Summer</h3><p>Action comedy · 2h 01m · 8.2</p></article>
+        </div>
+      </section>
+
+      <section class="section" id="charts">
+        <div class="section-heading">
+          <p class="eyebrow">Charts</p>
+          <h2>Top rated crossover list</h2>
+        </div>
+        <ol class="chart-list" id="chart-list"></ol>
+      </section>
+
+      <section class="watchlist" id="watchlist">
+        <div>
+          <p class="eyebrow">Your queue</p>
+          <h2>Build a universal watchlist</h2>
+          <p>Add anime seasons, movies, and limited series to one queue with smart tags for rating, runtime, language, and release status.</p>
+        </div>
+        <button id="random-pick">Pick something for me</button>
+        <p class="pick-result" id="pick-result" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© 2026 OtakuReel. Demo entertainment discovery interface.</p>
+      <a href="#top">Back to top ↑</a>
+    </footer>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
