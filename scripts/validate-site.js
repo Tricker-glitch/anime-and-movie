@@ -1,6 +1,7 @@
 const { readFileSync, existsSync } = require('node:fs');
 
 const requiredFiles = ['index.html', 'src/styles.css', 'src/main.js', 'app.py', 'assets/posters/rrr.svg', 'assets/posters/dangal.svg'];
+const requiredFiles = ['index.html', 'src/styles.css', 'src/main.js'];
 const missingFiles = requiredFiles.filter((file) => !existsSync(file));
 
 if (missingFiles.length) {
@@ -44,6 +45,9 @@ const checks = [
   ['Python serves title API', py.includes('/api/titles')],
   ['Python includes Indian movie catalog', py.includes('Baahubali') && py.includes('Dangal')],
   ['Catalog uses local poster assets', py.includes('./assets/posters/rrr.svg') && js.includes('./assets/posters/your-name.svg')],
+  ['CSS defines responsive styles', css.includes('@media (max-width: 850px)')],
+  ['JavaScript renders title cards', js.includes('renderCards')],
+  ['JavaScript renders charts', js.includes('renderCharts')],
 ];
 
 const failures = checks.filter(([, passed]) => !passed);

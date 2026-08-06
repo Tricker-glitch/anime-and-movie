@@ -90,6 +90,15 @@ button, input { font: inherit; }
 .title-card.image-missing::before { align-items: end; background: linear-gradient(135deg, #3a155e, #ff7a1a); content: "Artwork loading"; display: flex; font-weight: 1000; height: 240px; padding: 1rem; text-transform: uppercase; }
 .card-image { aspect-ratio: 16 / 11; display: block; height: 240px; object-fit: cover; width: 100%; transition: transform .5s ease; }
 .title-card:hover .card-image { transform: scale(1.06); }
+.filter-tabs { display: flex; gap: .7rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.filter-tabs button { background: var(--panel); border: 1px solid var(--line); border-radius: 999px; color: var(--text); cursor: pointer; font-weight: 800; padding: .65rem 1rem; }
+.filter-tabs .active { background: var(--gold); color: #171100; }
+.title-grid { display: grid; gap: 1.2rem; grid-template-columns: repeat(3, 1fr); }
+.title-card { background: var(--panel); border: 1px solid var(--line); border-radius: 1.4rem; overflow: hidden; }
+.card-poster { align-items: end; display: flex; height: 220px; padding: 1rem; text-transform: uppercase; font-weight: 1000; letter-spacing: -.04em; }
+.card-poster.anime { background: linear-gradient(135deg, #3a155e, #ff3d81); }
+.card-poster.movie { background: linear-gradient(135deg, #3b2f05, #f5c84b); color: #1a1300; }
+.card-poster.series { background: linear-gradient(135deg, #052f3b, #36d1ff); color: #00151c; }
 .card-body { padding: 1rem; }
 .card-kicker, .card-footer { align-items: center; display: flex; justify-content: space-between; gap: .75rem; }
 .card-body h3 { font-size: 1.45rem; margin: 1rem 0 .35rem; }

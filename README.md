@@ -50,3 +50,19 @@ This is only for the browser demo and should be changed before any real deployme
 - If API data does not load, run `npm run start` or `python3 app.py` so `/api/titles` is available. The browser still has fallback title data for static previews.
 - If the page is blank, make sure you serve the repository root instead of opening a copied file path, because `index.html` loads assets from `src/`.
 - If validation fails, read the failing line from `scripts/validate-site.js`; it checks that the expected HTML, CSS, and JavaScript hooks are present.
+- Random watchlist picker interaction.
+
+## Getting Started
+
+Install dependencies and run the local development server:
+
+```bash
+npm install
+npm run start
+```
+
+Create a production build:
+
+```bash
+npm run build
+```

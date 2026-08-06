@@ -10,6 +10,15 @@ const fallbackTitles = [
 ];
 
 let titles = fallbackTitles;
+const titles = [
+  { name: 'Starlight Ronin', type: 'anime', year: 2026, rating: 9.2, meta: 'Action fantasy · Ep. 8 airing', vibe: 'Hot' },
+  { name: 'Neon Harbor', type: 'movie', year: 2025, rating: 8.8, meta: 'Sci-fi mystery · 2h 14m', vibe: 'Critic pick' },
+  { name: 'Moonlit Bento Club', type: 'anime', year: 2026, rating: 8.6, meta: 'Slice of life · Dub available', vibe: 'Cozy' },
+  { name: 'The Last Projectionist', type: 'movie', year: 2024, rating: 8.5, meta: 'Drama · Festival winner', vibe: 'Award buzz' },
+  { name: 'Mecha Hearts', type: 'series', year: 2026, rating: 8.4, meta: 'Animated series · Weekly', vibe: 'New' },
+  { name: 'Kaiju Summer', type: 'movie', year: 2025, rating: 8.2, meta: 'Action comedy · Family night', vibe: 'Fun' },
+];
+
 const grid = document.querySelector('#title-grid');
 const chartList = document.querySelector('#chart-list');
 const filterButtons = document.querySelectorAll('.filter-tabs button');
@@ -36,6 +45,11 @@ function renderCards(filter = 'all', query = '') {
   grid.innerHTML = filteredTitles.map((title, index) => `
     <article class="title-card animated-card" style="--delay: ${index * 80}ms">
       <img class="card-image" src="${title.image}" alt="${title.name} artwork" loading="lazy" onerror="this.closest('.title-card').classList.add('image-missing'); this.remove();" />
+  grid.innerHTML = filteredTitles.map((title) => `
+    <article class="title-card">
+      <div class="card-poster ${title.type}">
+        <span>${title.type}</span>
+      </div>
       <div class="card-body">
         <div class="card-kicker"><span>${title.vibe}</span><span>${title.year}</span></div>
         <h3>${title.name}</h3>
@@ -82,6 +96,10 @@ searchForm.addEventListener('submit', (event) => {
 });
 
 searchInput.addEventListener('input', () => renderCards(getActiveFilter(), searchInput.value));
+
+  const activeFilter = document.querySelector('.filter-tabs .active').dataset.filter;
+  renderCards(activeFilter, searchInput.value);
+});
 
 navToggle.addEventListener('click', () => {
   const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
@@ -244,3 +262,5 @@ payoutForm.addEventListener('submit', (event) => {
 });
 
 renderPayouts();
+renderCards();
+renderCharts();
